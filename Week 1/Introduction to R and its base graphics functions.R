@@ -107,3 +107,31 @@ pie(carsPerCyl, main = "Number of Cars by Cylinder Size", col = colours)
 (labels <- paste0(labels, "%"))
 pie(carsPerCyl, main = "Number of Cars by Cylinder Size", col = colours, labels = labels)
 legend(x=1.0, y=0.5, legend = names(carsPerCyl), fill = colours)
+
+hist(airquality$Solar.R)
+hist(airquality$Solar.R, breaks = seq(from = 0, to = 350, by = 25))
+
+boxplot(airquality[,1:4])
+
+plot(pressure$temperature, pressure$pressure, type = 'l',
+     main = "Pressure by Temperature",
+     xlab = "Temperature", ylab = "Pressure")
+plot(pressure$temperature, pressure$pressure, type = 's',
+     main = "Pressure by Temperature",
+     xlab = "Temperature", ylab = "Pressure")
+# View(mtcars) # Uncomment this line to view contents of mtcars dataframe. # 3a. First, produce a table of number of cars by engine type:
+(carsByEngine <- table(mtcars$vs))
+##
+##  0  1
+## 18 14
+# 3b. Display as Numbers:
+(labels <- paste0(carsByEngine, " cars")) ## [1] "18 cars" "14 cars"
+colours <- c("lightblue1", "lemonchiffon")
+pie(carsByEngine, labels = labels, col = colours, main = "Number of Cars by Engine type")
+legend(x=1.0, y=1.0, cex=0.7, c("V-shaped", "Straight"), fill = colours)
+# 3c. Display as proportion (%), with legend bottom right:
+colours <- c("lightblue1", "lemonchiffon")
+labels <- paste0(round(carsByEngine/sum(carsByEngine)*100), "%")
+pie(carsByEngine, labels = labels, col = colours, main = "Proportion of Cars by Engine type")
+legend(x="bottomright", cex=0.7, c("V-shaped", "Straight"), fill = colours)
+
