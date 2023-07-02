@@ -134,4 +134,20 @@ colours <- c("lightblue1", "lemonchiffon")
 labels <- paste0(round(carsByEngine/sum(carsByEngine)*100), "%")
 pie(carsByEngine, labels = labels, col = colours, main = "Proportion of Cars by Engine type")
 legend(x="bottomright", cex=0.7, c("V-shaped", "Straight"), fill = colours)
+hist(mtcars$mpg, breaks = 12, xlab = "Miles Per Gallon", main = "Histogram with 12 Bins", col = "mediumpurple1", border = "mediumpurple1")
+hist(mtcars$mpg, breaks = 12, xlab = "Miles Per Gallon", xlim = c(10, 35),
+     main = "Histogram with 12 Bins", col = "mediumpurple1", border = "mediumpurple1")
 
+vShaped <- mtcars[mtcars$vs==0,"hp"]
+straight <- mtcars[mtcars$vs==1,"hp"]
+colours <- c("lightblue1", "lemonchiffon")
+boxplot(vShaped, straight,names = c("V-shaped", "Straight"), col = colours, main = "Horsepower by Engine type", xlab = NULL, ylab = "Horsepower")
+
+vShaped <- mtcars[mtcars$vs==0,"hp"] straight <- mtcars[mtcars$vs==1,"hp"] colours <- c("lightblue1", "lemonchiffon") boxplot(vShaped, straight,
+                                                                                                                              names = c("V-shaped", "Straight"), col = colours,
+                                                                                                                              main = "Horsepower by Engine type", xlab = NULL, ylab = "Horsepower")
+colours <- c("lightblue1", "lemonchiffon")
+boxplot(mtcars$hp ~ mtcars$vs,names = c("V-shaped", "Straight"), col = colours, main = "Horsepower by Engine type", xlab = NULL, ylab = "Horsepower")
+
+colours <- c("lightblue1", "lemonchiffon")
+boxplot(mtcars$hp ~ mtcars$vs,main = "Horsepower by Engine type", xlab = NULL, ylab = "Horsepower")
