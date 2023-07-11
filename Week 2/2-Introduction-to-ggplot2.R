@@ -1,0 +1,46 @@
+install.packages("ggplot2")
+library(ggplot2)
+? diamonds
+
+ggplot(diamonds) + aes(carat, price) + geom_point(alpha = 0.5)
+nrow(diamonds)
+set.seed(2)
+sampleDiamonds <- diamonds[sample(nrow(diamonds), 500), ]
+ggplot(sampleDiamonds) + aes(carat, price) + geom_point(alpha = 0.5)
+ggplot(sampleDiamonds) + geom_point(aes(carat, price), alpha = 0.5)
+ggplot() + geom_point(aes(carat, price), alpha = 0.5, data = sampleDiamonds)
+ggplot(sampleDiamonds) + aes(carat, price, colour = cut) + geom_point(alpha = 0.5)
+? geom_point
+ggplot(sampleDiamonds) + aes(log(carat), log(price), colour = cut) + geom_point(alpha = 0.5)
+diamondPlot <- ggplot(sampleDiamonds) + aes(carat, price, color = cut)
+diamondPlot + geom_line()
+ggplot(sampleDiamonds) + aes(carat, price, color = cut) + geom_line()
+diamondPlot + geom_smooth()
+diamondPlot + geom_rug()
+ggplot(sampleDiamonds) + aes(carat, price, colour = cut) +
+  geom_point() + geom_smooth()
+ggplot(sampleDiamonds) +
+  geom_point(aes(carat, price, colour = cut)) + geom_smooth(aes(carat, price))
+ggplot(sampleDiamonds) + aes(carat, price, colour = cut) +
+  geom_point() + geom_rug() + geom_smooth(aes(carat, price, colour = NULL))
+ggplot(sampleDiamonds) + geom_point(aes(carat, price, colour = cut)) +
+  geom_histogram(aes(carat), data = diamonds)
+ggplot(diamonds) + aes(cut) + geom_bar()
+ggplot(diamonds) + aes(cut, fill = color) + geom_bar()
+ggplot(diamonds) + aes(x = "", fill = cut) + geom_bar() + coord_polar("y")
+? mpg
+ggplot(mpg) + aes(displ, hwy) + geom_point()
+ggplot(mpg) + aes(displ, hwy, size = cty) + geom_point()
+ggplot(mpg) + aes(displ, hwy, size = cty, colour = class) + geom_point()
+ggplot(mpg) + aes(displ, hwy, colour = class) + geom_point() +
+  geom_rug()
+ggplot(mpg) + aes(displ, hwy, colour = class) + geom_point() +
+  geom_rug() + geom_smooth(aes(colour = NULL))
+ggplot(mpg) + aes(class) + geom_bar()
+ggplot(mpg) + aes(class, fill = fl) + geom_bar()
+ggplot(mpg) + aes(x = "", fill = class) + geom_bar() + coord_polar("y")
+ggplot(mpg) + aes(hwy) + geom_histogram(bins = 20)
+ggplot(mpg) + aes(displ, hwy) +
+  geom_smooth() + geom_point(aes(colour = drv))
+ggplot(mpg) + aes(displ, hwy) +
+  geom_smooth(aes(linetype = drv)) + geom_point(aes(colour = drv))
